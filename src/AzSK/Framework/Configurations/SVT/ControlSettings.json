@@ -110,7 +110,10 @@
   },
   "NoOfApprovedAdmins": 5,
   "NoOfClassicAdminsLimit": 2,
-  "CriticalPIMRoles": [ "Owner", "Contributor" ],  
+  "CriticalPIMRoles": { 
+    "Subscription" : [ "Owner", "Contributor", "User Access Administrator" ],
+    "ResourceGroup" : [ "Owner", "User Access Administrator" ]
+  },
   "ASCAlertsSeverityLevels": [ "High" ],
   "ASCAlertsThresholdInDays": 30,
   "WhitelistedMgmtCerts": {
@@ -350,7 +353,9 @@
   },
   "SubscriptionCore": {
     "EnableV1AlertFailure": false,
-    "ASCTier": "Standard"
+    "ASCTier": "Standard",
+    "NonADIdentitiesPatterns" : ["(.)*#ext#@(.)*.onmicrosoft.com"],
+    "WhitelistedNonADIndentitiesPatterns" : []
   },
   "HDInsight": {
     "MinSupportedClusterVersion": "3.6.0"
