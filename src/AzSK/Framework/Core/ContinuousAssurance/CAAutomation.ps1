@@ -3211,8 +3211,10 @@ class CCAutomation: CommandBase
 		}
 		catch
 		{
-				Write-Warning "Ignoring error while assigning CA SPN permissions for SPN: [$appID]."
-				Write-Warning "Make sure this SPN is 'Contributor' on AzSKRG and 'Reader' on the subscription."
+				$SPNInfo =""
+				$SPNInfo = Get-AzADApplication -ApplicationId $appID -ErrorAction Ignore
+				Write-Warning " Ignoring error while assigning CA SPN permissions for SPN:[$($SPNInfo.DisplayName) (ObjectId: $($SPNInfo.ObjectId))]."
+				Write-Warning " Make sure this SPN is assigned 'Contributor' permission on AzSKRG and 'Reader' permission on the subscription."
 		}
 
     }
